@@ -4,30 +4,30 @@
 #include <memory>
 #include <set>
 
-#include "./Quote.h"
-class Quote;
+#include "./Book.h"
+class Book;
 
 class Basket
 {
 public:
-    void add_item(const Quote &sale)
+    void add_item(const Book &sale)
     {
-        items.insert(std::shared_ptr<Quote>(sale.clone()));
+        items.insert(std::shared_ptr<Book>(sale.clone()));
     }
-    void add_item(Quote &&sale)
+    void add_item(Book &&sale)
     {
-        items.insert(std::shared_ptr<Quote>(std::move(sale).clone()));
+        items.insert(std::shared_ptr<Book>(std::move(sale).clone()));
     }
 
     double total_receipt(std::ostream &) const;
 
 private:
-    static bool compare(const std::shared_ptr<Quote> &lhs,
-                        const std::shared_ptr<Quote> &rhs)
+    static bool compare(const std::shared_ptr<Book> &lhs,
+                        const std::shared_ptr<Book> &rhs)
     {
         return lhs->isbn() < rhs->isbn();
     }
-    std::multiset<std::shared_ptr<Quote>, decltype(compare)*> items{compare};
+    std::multiset<std::shared_ptr<Book>, decltype(compare)*> items{compare};
 };
 
 #endif // BASKET_H
