@@ -11,10 +11,10 @@ double A_book::net_price(std::size_t cnt) const
         return cnt * price;
 }
 
-double print_total(ostream &os, const Book &item, size_t n)
+double print_total(ostream &os, const Book &book, size_t n)
 {
-    double ret = item.net_price(n);
-    os << "ISBN: " << item.isbn()
+    double ret = book.net_price(n);
+    os << "ISBN: " << book.isbn()
        << ", # sold: " << n
        << ", total due: " << ret
        << endl;

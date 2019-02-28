@@ -12,11 +12,11 @@ class Basket
 public:
     void add_item(const Book &sale)
     {
-        items.insert(std::shared_ptr<Book>(sale.clone()));
+        books.insert(std::shared_ptr<Book>(sale.clone()));
     }
     void add_item(Book &&sale)
     {
-        items.insert(std::shared_ptr<Book>(std::move(sale).clone()));
+        books.insert(std::shared_ptr<Book>(std::move(sale).clone()));
     }
 
     double total_receipt(std::ostream &) const;
@@ -27,7 +27,7 @@ private:
     {
         return lhs->isbn() < rhs->isbn();
     }
-    std::multiset<std::shared_ptr<Book>, decltype(compare)*> items{compare};
+    std::multiset<std::shared_ptr<Book>, decltype(compare)*> books{compare};
 };
 
 #endif // BASKET_H
