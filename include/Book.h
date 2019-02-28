@@ -1,5 +1,5 @@
-#ifndef QUOTE_H
-#define QUOTE_H
+#ifndef BOOK_H
+#define BOOK_H
 
 #include <string>
 #include <iostream>
@@ -83,4 +83,4 @@ public:
 
 double print_total(std::ostream &, const Book&, std::size_t);
 
-#endif // QUOTE_H
+#endif // BOOK_H
